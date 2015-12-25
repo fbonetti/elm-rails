@@ -1,0 +1,3 @@
+.bundle/
+pkg/
+*.DS_Store
