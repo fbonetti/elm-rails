@@ -8,8 +8,8 @@ Gem::Specification.new do |s|
   s.name        = "elm-rails"
   s.version     = Elm::Rails::VERSION
   s.authors     = ["Frank Bonetti"]
-  s.email       = ["frankbonetti@kapowevents.com"]
-  s.homepage    = "https://github.com/fbonetti"
+  s.email       = ["frank.r.bonetti@gmail.com"]
+  s.homepage    = "https://github.com/fbonetti/elm-rails"
   s.summary     = "Summary of ElmRails."
   s.description = "Description of ElmRails."
   s.license     = "MIT"
