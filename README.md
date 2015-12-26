@@ -37,13 +37,13 @@
     **app/assets/Hello.elm**
     ```elm
     module Hello where
-
+    
     import Graphics.Element exposing (show)
-
+    
     port noun : String
-
+    
     main =
-      show "Hello " ++ noun
+      show ("Hello " ++ noun)
     ```
 
 2. Use the view helper to insert your component into your view. Pass port values as a `Hash`.
