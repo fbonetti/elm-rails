@@ -1,8 +1,8 @@
-= elm-rails
+# elm-rails
 
 `elm-rails` makes it easy to use [Elm](elm-lang.org) modules in your Ruby on Rails applications.
 
-### Installation
+## Installation
 
 1. Add elm-rails to your `Gemfile` and run `bundle install`
 
@@ -32,8 +32,9 @@
 
 ### Usage
 
-1. Define your elm modules in the `app/assets/elm` directory. For example, `hello.elm`:
+1. Define your elm modules in the `app/assets/elm` directory.
 
+    **app/assets/hello.elm**
     ```elm
     module HelloWorld where
 
