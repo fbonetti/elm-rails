@@ -34,19 +34,21 @@
 
 1. Define your elm modules in the `app/assets/elm` directory.
 
-    **app/assets/hello.elm**
+    **app/assets/Hello.elm**
     ```elm
-    module HelloWorld where
+    module Hello where
 
     import Graphics.Element exposing (show)
 
+    port noun : String
+
     main =
-      show "Hello World!"
+      show "Hello " ++ noun
     ```
 
 2. Use the view helper to insert your component into your view:
 
     ```erb
     <h1>This is an Elm component!</h1>
-    <%= elm_embed('Elm.HelloWorld', {}) %>
+    <%= elm_embed('Elm.HelloWorld', { noun: 'World!' }) %>
     ```
