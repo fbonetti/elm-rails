@@ -10,7 +10,7 @@
     gem "elm-rails"
     ```
 
-2. Add the `elm_modules` asset to your `application.js` file
+2. Add the `elm_modules` asset to your `application.js` manifest file
 
     ```javascript
     //= elm_modules
@@ -46,9 +46,11 @@
       show "Hello " ++ noun
     ```
 
-2. Use the view helper to insert your component into your view:
+2. Use the view helper to insert your component into your view. Pass port values as a `Hash`.
 
     ```erb
     <h1>This is an Elm component!</h1>
-    <%= elm_embed('Elm.HelloWorld', { noun: 'World!' }) %>
+    <%= elm_embed('Elm.Hello', { noun: 'World!' }) %>
     ```
+    
+3. That's it!
