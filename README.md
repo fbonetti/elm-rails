@@ -22,12 +22,18 @@
     mkdir app/assets/elm
     ```
 
-3. Disable asset caching in `config/environments/development.rb`
+4. Disable asset caching in `config/environments/development.rb`
 
     ```ruby
     config.assets.configure do |env|
       env.cache = ActiveSupport::Cache.lookup_store(:null_store)
     end
+    ```
+
+5. Update `.gitignore` to ignore elm files
+
+    ```
+    /elm-stuff
     ```
 
 ### Usage
