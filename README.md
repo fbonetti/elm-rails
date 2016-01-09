@@ -13,7 +13,7 @@
 2. Add the `elm_modules` asset to your `application.js` manifest file
 
     ```javascript
-    //= elm_modules
+    //= require elm_modules
     ```
 
 3. Create a new directory to house all Elm modules
