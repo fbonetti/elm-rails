@@ -40,7 +40,7 @@
 
 1. Define your elm modules in the `app/assets/elm` directory.
 
-    **app/assets/Hello.elm**
+    **app/assets/elm/Hello.elm**
     ```elm
     module Hello where
     
