@@ -25,7 +25,7 @@ module Elm
 
       def call(input)
         {
-          data: Elm::Compiler.compile(input[:filename], elm_make_path: ::Rails.root.join("bin/elm-make").to_s),
+          data: Elm::Compiler.compile(input[:filename], elm_make_path: ::Elm::Rails.elm_make_path),
           dependencies: Set.new(elm_dependencies(input[:filename], input[:load_path]).compact),
         }
       end
