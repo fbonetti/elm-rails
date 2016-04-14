@@ -35,7 +35,7 @@ module Elm
       # Add all Elm modules imported in the target file as dependencies, then
       # recursively do the same for each of those dependent modules.
       def elm_dependencies(filename, load_path)
-        dependencies = File.read(filename).each_line.flat_map do |line|
+        File.read(filename).each_line.flat_map do |line|
           # e.g. `import Quiz.QuestionStore exposing (..)`
           match = line.match(/^import\s+([^\s]+)/)
 

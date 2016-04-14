@@ -1,1 +1,1 @@
-require 'elm/rails'
+require "elm/rails"
