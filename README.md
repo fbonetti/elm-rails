@@ -29,30 +29,30 @@
     **app/assets/elm/Hello.elm**
     ```elm
     module Hello where
-    
+
     import Graphics.Element exposing (show)
-    
+
     port noun : String
-    
+
     main =
       show ("Hello " ++ noun)
     ```
 
-2. Use the view helper to insert your component into your view. Pass port values as a `Hash`.
+2. Open your `app/assets/javascript.js` and require your `Hello.elm`.
+  ```
+  //= require Hello
+  ```
+
+3. Use the view helper to insert your component into your view. Pass port values as a `Hash`.
 
     ```erb
     <h1>This is an Elm component!</h1>
     <%= elm_embed('Elm.Hello', { noun: 'World!' }) %>
     ```
-    
-3. That's it!
+
+4. That's it!
 
 ### Configuration
 
-If necessary, you may specify the path to the `elm-make` executable in an initializer.
-
-    **config/initializers/elm-rails.rb**
-    ```ruby
-    Elm::Rails.elm_path_path = "bin/elm-make"
-    ```
-
+There is nothing to configure, but you should have Elm installed in your system
+and `elm-make` must be availble in your path.

@@ -25,7 +25,7 @@ module Elm
 
       def call(input)
         {
-          data: Elm::Compiler.compile(input[:filename], elm_make_path: ::Elm::Rails.elm_make_path),
+          data: Elm::Compiler.compile(input[:filename]),
           dependencies: Set.new(elm_dependencies(input[:filename], input[:load_path]).compact),
         }
       end
@@ -35,7 +35,7 @@ module Elm
       # Add all Elm modules imported in the target file as dependencies, then
       # recursively do the same for each of those dependent modules.
       def elm_dependencies(filename, load_path)
-        dependencies = File.read(filename).each_line.flat_map do |line|
+        File.read(filename).each_line.flat_map do |line|
           # e.g. `import Quiz.QuestionStore exposing (..)`
           match = line.match(/^import\s+([^\s]+)/)
 
