@@ -2,3 +2,6 @@
 pkg/
 *.DS_Store
 *.gem
+tags
+*un~
+*swp
