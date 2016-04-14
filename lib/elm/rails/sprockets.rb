@@ -25,8 +25,10 @@ module Elm
 
       def call(input)
         {
-          data: Elm::Compiler.compile(input[:filename]),
-          dependencies: Set.new(elm_dependencies(input[:filename], input[:load_path]).compact),
+          data: Elm::Compiler.compile(
+            [input[:filename]] +
+            (elm_dependencies(input[:filename], input[:load_path]).compact.uniq)
+          )
         }
       end
 
@@ -53,8 +55,7 @@ module Elm
           # If we don't find the dependency in our filesystem, assume it's because
           # it comes in through a third-party package rather than our sources.
           if File.file? dependency_filepath
-            dependency_uri = ::Sprockets::URIUtils.build_file_digest_uri(dependency_filepath)
-            [dependency_uri] +
+            [dependency_filepath] +
               elm_dependencies(dependency_filepath, load_path)
           else
             []
