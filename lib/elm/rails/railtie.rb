@@ -11,17 +11,19 @@ module Elm
       end
 
       initializer "elm-rails.setup_engine", :group => :all do |app|
-        sprockets_env = app.assets || app.config.assets
-        sprockets_env.paths.concat Dir[app.root.join("app", "assets", "elm")]
+        if Gem::Version.new(::Sprockets::Rails::VERSION) >= Gem::Version.new("3.0.0")
+          config.assets.configure do |env|
+            sprockets_env = app.assets || app.config.assets
+            sprockets_env.paths.concat Dir[app.root.join("app", "assets", "elm")]
 
-        config.assets.configure do |env|
-          env.register_mime_type "text/x-elm", extensions: [".elm"]
-
-          if Gem::Version.new(Sprockets::VERSION) >= Gem::Version.new("3.0.0")
             env.register_transformer "text/x-elm", "application/javascript", Elm::Rails::Sprockets
-          else
-            env.register_engine ".elm", Elm::Rails::Sprockets
+            env.register_mime_type "text/x-elm", extensions: [".elm"]
           end
+        else
+          app.config.assets.paths << "app/assets/elm"
+
+          app.assets.register_engine ".elm", Elm::Rails::Sprockets
+          app.assets.register_mime_type "text/x-elm", ".elm"
         end
       end
     end
