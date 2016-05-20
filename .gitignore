@@ -2,3 +2,6 @@
 pkg/
 *.DS_Store
 *.gem
+Gemfile.lock
+spec/dummy
+elm-stuff
