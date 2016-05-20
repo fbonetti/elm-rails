@@ -1,0 +1,6 @@
+language: ruby
+cache: bundler
+rvm: 2.2.3
+sudo: false
+before_install: npm install elm@0.16.0
+

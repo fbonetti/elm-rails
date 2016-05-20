@@ -2,6 +2,7 @@
 pkg/
 *.DS_Store
 *.gem
+node_modules
 Gemfile.lock
 spec/dummy
 elm-stuff

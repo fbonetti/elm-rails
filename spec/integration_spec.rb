@@ -20,7 +20,7 @@ ELM
 
   it "serves the compiled javascript" do
     visit "/assets/HelloWorld.js"
-    page.body.should include("Elm.HelloWorld")
-    page.body.should include("Hello World!")
+    expect(page.body).to include("Elm.HelloWorld")
+    expect(page.body).to include("Hello World!")
   end
 end

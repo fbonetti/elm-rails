@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/fbonetti/elm-rails.svg?branch=master)](http://travis-ci.org/fbonetti/elm-rails)
+
 # elm-rails
 
 `elm-rails` makes it easy to use [Elm](http://elm-lang.org) modules in your Ruby on Rails applications. This project was heavily inspired by [react-rails](https://github.com/reactjs/react-rails).
