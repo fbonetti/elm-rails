@@ -1,6 +1,14 @@
 language: ruby
-cache: bundler
+cache:
+  bundler: true
+  directories:
+    - node_modules
+    - elm-stuff
 rvm: 2.2.3
 sudo: false
-before_install: npm install elm@0.16.0
+before_script:
+  - npm install elm@0.16.0
+gemfile:
+  - gemfiles/rails_4.gemfile
+  - gemfiles/rails_5.gemfile
 
