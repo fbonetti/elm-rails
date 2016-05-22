@@ -18,6 +18,8 @@ module Elm
           (function() {
             var onLoad = function(func) {
               if (window.attachEvent) {
+                console.log("attachEvent");
+                console.log(yourFunctionName);
                 window.attachEvent('onload', yourFunctionName);
               } else {
                 if (window.onload) {
@@ -41,12 +43,11 @@ module Elm
             var embedDiv = currentScript.previousSibling;
 
             onLoad(function() {
-              Elm.embed(#{raw module_name}, embedDiv, #{raw args.to_json});
+              window.#{raw module_name} = #{raw module_name}.embed(embedDiv, #{raw args.to_json});
             });
           })();
         HTML
       end
-
     end
   end
 end
