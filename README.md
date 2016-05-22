@@ -10,27 +10,13 @@
     gem "elm-rails"
     ```
 
-2. Add the `elm_modules` asset to your `application.js` manifest file
-
-    ```javascript
-    //= require elm_modules
-    ```
-
-3. Create a new directory to house all Elm modules
+2. Create a new directory to house all Elm modules
 
     ```bash
     mkdir app/assets/elm
     ```
 
-4. Disable asset caching in `config/environments/development.rb`
-
-    ```ruby
-    config.assets.configure do |env|
-      env.cache = ActiveSupport::Cache.lookup_store(:null_store)
-    end
-    ```
-
-5. Update `.gitignore` to ignore elm files
+3. Update `.gitignore` to ignore elm files
 
     ```
     /elm-stuff
@@ -43,20 +29,30 @@
     **app/assets/elm/Hello.elm**
     ```elm
     module Hello where
-    
+
     import Graphics.Element exposing (show)
-    
+
     port noun : String
-    
+
     main =
       show ("Hello " ++ noun)
     ```
 
-2. Use the view helper to insert your component into your view. Pass port values as a `Hash`.
+2. Open your `app/assets/javascript.js` and require your `Hello.elm`.
+  ```
+  //= require Hello
+  ```
+
+3. Use the view helper to insert your component into your view. Pass port values as a `Hash`.
 
     ```erb
     <h1>This is an Elm component!</h1>
     <%= elm_embed('Elm.Hello', { noun: 'World!' }) %>
     ```
-    
-3. That's it!
+
+4. That's it!
+
+### Configuration
+
+There is nothing to configure, but you should have Elm installed in your system
+and `elm-make` must be availble in your path.
