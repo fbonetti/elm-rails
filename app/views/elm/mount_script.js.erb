@@ -20,10 +20,13 @@
     var scripts = document.getElementsByTagName("script");
     return scripts[scripts.length - 1];
   })();
-  
+
   var embedDiv = currentScript.previousSibling;
 
   onLoad(function() {
-    Elm.embed(<%= raw module_name %>, embedDiv, <%= raw args.to_json %>);
+    var elmApp = <%= raw module_name %>.embed(embedDiv);
+    <% args.each do |port, val| %>
+        elmApp.ports.<%= port %>.send(<%= encode_param(val) %>);
+    <% end %>
   });
 })();

@@ -18,4 +18,11 @@ module ElmViewHelper
     end
   end
 
+  def encode_param(value)
+    case
+      when value.is_a?(String) then raw("\"#{value}\"")
+      when value.is_a?(Hash) then raw(value.to_json)
+      else value
+    end
+  end
 end
