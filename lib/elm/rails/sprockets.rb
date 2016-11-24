@@ -24,19 +24,16 @@ module Elm
       end
 
       def call(input)
-        {
-          data: Elm::Compiler.compile(
-            [input[:filename]] +
-            (elm_dependencies(input[:filename], input[:load_path]).compact.uniq)
-          )
-        }
+        context  = input[:environment].context_class.new(input)
+        add_elm_dependencies(input[:filename], input[:load_path], context)
+        context.metadata.merge(data: Elm::Compiler.compile(input[:filename]))
       end
 
       private
 
       # Add all Elm modules imported in the target file as dependencies, then
       # recursively do the same for each of those dependent modules.
-      def elm_dependencies(filename, load_path)
+      def add_elm_dependencies(filename, load_path, context)
         File.read(filename).each_line.flat_map do |line|
           # e.g. `import Quiz.QuestionStore exposing (..)`
           match = line.match(/^import\s+([^\s]+)/)
@@ -55,10 +52,7 @@ module Elm
           # If we don't find the dependency in our filesystem, assume it's because
           # it comes in through a third-party package rather than our sources.
           if File.file? dependency_filepath
-            [dependency_filepath] +
-              elm_dependencies(dependency_filepath, load_path)
-          else
-            []
+            context.depend_on(dependency_logical_name)
           end
         end
       end
