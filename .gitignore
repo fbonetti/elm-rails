@@ -2,3 +2,9 @@
 pkg/
 *.DS_Store
 *.gem
+tags
+*un~
+*swp
+
+test/**/public/assets/**/*
+test/**/elm-stuff/**/*

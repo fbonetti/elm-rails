@@ -1,0 +1,13 @@
+language: ruby
+install:
+  - bundle install
+  - bundle install --gemfile=test/rails4.2/Gemfile
+  - bundle install --gemfile=test/rails5.0/Gemfile
+  - npm install -g elm
+cache:
+  directories:
+    - test/rails5.0/elm-stuff/build-artifacts
+    - test/rails4.2/elm-stuff/build-artifacts
+rvm:
+  - 2.3.3
+  - 2.2.6
