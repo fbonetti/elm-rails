@@ -2,6 +2,10 @@
 
 `elm-rails` makes it easy to use [Elm](elm-lang.org) modules in your Ruby on Rails applications. This project was heavily inspired by [react-rails](https://github.com/reactjs/react-rails).
 
+## Compatibility
+
+This gem is tested against Ruby 2.2 and 2.3, and Rails versions 4.2.7 and 5.0. It _may_ work on other versions, and if you want to open a PR adding tests against those versions they would be welcome.
+
 ## Installation
 
 1. Add elm-rails to your `Gemfile` and run `bundle install`
@@ -22,20 +26,20 @@
     /elm-stuff
     ```
 
-### Usage
+## Usage
 
 1. Define your elm modules in the `app/assets/elm` directory.
 
     **app/assets/elm/Hello.elm**
     ```elm
-    module Hello where
+    module Hello exposing (..)
 
-    import Graphics.Element exposing (show)
+    import Html exposing (text)
 
     port noun : String
 
     main =
-      show ("Hello " ++ noun)
+      text ("Hello " ++ noun)
     ```
 
 2. Open your `app/assets/javascript.js` and require your `Hello.elm`.
@@ -52,7 +56,7 @@
 
 4. That's it!
 
-### Configuration
+## Configuration
 
 There is nothing to configure, but you should have Elm installed in your system
 and `elm-make` must be availble in your path.
