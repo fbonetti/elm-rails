@@ -26,8 +26,9 @@ module Elm
       def call(input)
         context = input[:environment].context_class.new(input)
         add_elm_dependencies(input[:filename], input[:load_path], context)
-        debug_flag = case ENV['ELM_RAILS_DEBUG'].downcase
-                     when 'false', '0', nil
+        debug = ENV['ELM_RAILS_DEBUG'].nil? ? nil : ENV['ELM_RAILS_DEBUG'].downcase
+        debug_flag = case debug
+                     when nil, 'false', '0'
                        false
                      else
                        true
