@@ -24,9 +24,17 @@ module Elm
       end
 
       def call(input)
-        context  = input[:environment].context_class.new(input)
+        context = input[:environment].context_class.new(input)
         add_elm_dependencies(input[:filename], input[:load_path], context)
-        context.metadata.merge(data: Elm::Compiler.compile(input[:filename]))
+        debug_flag = case ENV['ELM_RAILS_DEBUG'].downcase
+                     when 'false', '0', nil
+                       false
+                     else
+                       true
+                     end
+        context.metadata.merge(
+          data: Elm::Compiler.compile(input[:filename], debug: debug_flag)
+        )
       end
 
       private
