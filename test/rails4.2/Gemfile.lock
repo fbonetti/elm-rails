@@ -1,8 +1,8 @@
 PATH
   remote: ../..
   specs:
-    elm-rails (0.1.2)
-      elm-compiler (~> 0.1.2)
+    elm-rails (0.2.1)
+      elm-compiler (>= 0.2.0)
       rails (>= 4.0)
 
 GEM
@@ -57,7 +57,7 @@ GEM
     coffee-script-source (1.12.2)
     concurrent-ruby (1.0.4)
     debug_inspector (0.0.2)
-    elm-compiler (0.1.2)
+    elm-compiler (0.2.1)
     erubis (2.7.0)
     execjs (2.7.0)
     globalid (0.3.7)
@@ -167,4 +167,4 @@ DEPENDENCIES
   web-console (~> 2.0)
 
 BUNDLED WITH
-   1.12.5
+   1.14.3

@@ -2,7 +2,7 @@ PATH
   remote: .
   specs:
     elm-rails (0.2.1)
-      elm-compiler (~> 0.1.2)
+      elm-compiler (>= 0.2.0)
       rails (>= 4.0)
 
 GEM
@@ -46,13 +46,13 @@ GEM
       minitest (~> 5.1)
       tzinfo (~> 1.1)
     arel (7.1.4)
-    builder (3.2.2)
+    builder (3.2.3)
     concurrent-ruby (1.0.4)
-    elm-compiler (0.1.2)
+    elm-compiler (0.2.1)
     erubis (2.7.0)
     globalid (0.3.7)
       activesupport (>= 4.1.0)
-    i18n (0.7.0)
+    i18n (0.8.0)
     loofah (2.0.3)
       nokogiri (>= 1.5.9)
     mail (2.6.4)
@@ -104,7 +104,7 @@ GEM
     thread_safe (0.3.5)
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
-    websocket-driver (0.6.4)
+    websocket-driver (0.6.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.2)
 
@@ -115,4 +115,4 @@ DEPENDENCIES
   elm-rails!
 
 BUNDLED WITH
-   1.12.5
+   1.14.3

@@ -24,9 +24,9 @@ module Elm
       end
 
       def call(input)
-        context  = input[:environment].context_class.new(input)
+        context = input[:environment].context_class.new(input)
         add_elm_dependencies(input[:filename], input[:load_path], context)
-        context.metadata.merge(data: Elm::Compiler.compile(input[:filename]))
+        context.metadata.merge(data: Elm::Compiler.compile(input[:filename], elm_make_path: Elm::Rails.elm_make_path))
       end
 
       private

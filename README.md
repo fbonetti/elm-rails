@@ -58,5 +58,9 @@ This gem is tested against Ruby 2.2 and 2.3, and Rails versions 4.2.7 and 5.0. I
 
 ## Configuration
 
-There is nothing to configure, but you should have Elm installed in your system
-and `elm-make` must be availble in your path.
+By default, elm-rails will use the version of `elm-make` available in your system path. If you wish, you may configure this in an initializer:
+    **config/initializers/elm_rails.rb**
+    ```erb
+    Elm::Rails.elm_make_path = "bin/elm-make"
+    ```
+
