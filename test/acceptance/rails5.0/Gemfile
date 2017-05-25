@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Use elm-rails from the parent directory for testing
-gem 'elm-rails', path: '../..'
+gem 'elm-rails', path: '../../..'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

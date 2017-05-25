@@ -1,8 +1,8 @@
 language: ruby
 install:
   - bundle install
-  - bundle install --gemfile=test/rails4.2/Gemfile
-  - bundle install --gemfile=test/rails5.0/Gemfile
+  - bundle install --gemfile=test/acceptance/rails4.2/Gemfile
+  - bundle install --gemfile=test/acceptance/rails5.0/Gemfile
   - npm install -g elm
 rvm:
   - 2.3.3
