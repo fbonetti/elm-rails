@@ -1,0 +1,3 @@
+module Parent
+
+import Child

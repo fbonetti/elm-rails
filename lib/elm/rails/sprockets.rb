@@ -62,6 +62,7 @@ module Elm
           # it comes in through a third-party package rather than our sources.
           if File.file? dependency_filepath
             context.depend_on(dependency_logical_name)
+            add_elm_dependencies(dependency_filepath, load_path, context)
           end
         end
       end
