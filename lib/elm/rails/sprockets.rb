@@ -56,12 +56,14 @@ module Elm
         def recurse source, block
           source.scan(import_regex) do |(module_name)|
             logical_name = module_name.gsub(".", "/")
-            block.call logical_name
+            filepath = load_path + "/" + logical_name + ".elm"
 
             # If we don't find the dependency in our filesystem, assume it's because
             # it comes in through a third-party package rather than our sources.
-            filepath = load_path + "/" + logical_name + ".elm"
-            recurse File.read(filepath), block if File.file?(filepath)
+            if File.file?(filepath)
+              block.call logical_name
+              recurse File.read(filepath), block
+            end
           end
         end
 
