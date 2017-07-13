@@ -1,4 +1,6 @@
 .bundle/
+.ruby-version
+.ruby-gemset
 pkg/
 *.DS_Store
 *.gem
