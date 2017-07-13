@@ -25,44 +25,51 @@ module Elm
 
       def call(input)
         context = input[:environment].context_class.new(input)
-        add_elm_dependencies(input[:filename], input[:load_path], context)
-        debug = ENV['ELM_RAILS_DEBUG'].nil? ? nil : ENV['ELM_RAILS_DEBUG'].downcase
-        debug_flag = case debug
-                     when nil, 'false', '0'
-                       false
-                     else
-                       true
-                     end
-        context.metadata.merge(
-          data: Elm::Compiler.compile(input[:filename], debug: debug_flag, elm_make_path: Elm::Rails.elm_make_path)
-        )
+        DependencyGraph.new(input[:filename], input[:load_path]).each do |dependency|
+          context.depend_on dependency
+        end
+        compiled = Elm::Compiler.compile(input[:filename], {
+          debug: debug_flag,
+          elm_make_path: Elm::Rails.elm_make_path
+        })
+        context.metadata.merge data: compiled
       end
 
       private
 
-      # Add all Elm modules imported in the target file as dependencies, then
-      # recursively do the same for each of those dependent modules.
-      def add_elm_dependencies(filename, load_path, context)
-        File.read(filename).each_line.flat_map do |line|
-          # e.g. `import Quiz.QuestionStore exposing (..)`
-          match = line.match(/^import\s+([^\s]+)/)
+      def debug_flag
+        case ENV['ELM_RAILS_DEBUG']
+        when nil, /^false$/i, '0'
+          false
+        else
+          true
+        end
+      end
 
-          next [] if match.nil?
+      class DependencyGraph < Struct.new(:filename, :load_path)
+        def each &block
+          recurse File.read(filename), block
+        end
 
-          # e.g. Quiz.QuestionStore
-          module_name = match.captures[0]
+        private
 
-          # e.g. Quiz/QuestionStore
-          dependency_logical_name = module_name.gsub(".", "/")
+        def recurse source, block
+          source.scan(import_regex) do |(module_name)|
+            logical_name = module_name.gsub(".", "/")
+            filepath = load_path + "/" + logical_name + ".elm"
 
-          # e.g. ~/NoRedInk/app/assets/javascripts/Quiz/QuestionStore.elm
-          dependency_filepath = load_path + "/" + dependency_logical_name + ".elm"
-
-          # If we don't find the dependency in our filesystem, assume it's because
-          # it comes in through a third-party package rather than our sources.
-          if File.file? dependency_filepath
-            context.depend_on(dependency_logical_name)
+            # If we don't find the dependency in our filesystem, assume it's because
+            # it comes in through a third-party package rather than our sources.
+            if File.file?(filepath)
+              block.call logical_name
+              recurse File.read(filepath), block
+            end
           end
+        end
+
+        def import_regex
+          # `import Quiz.Question exposing (..)`
+          /^import\s+([^\s]+)/
         end
       end
     end
