@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    elm-rails (0.2.1)
+    elm-rails (0.2.2)
       elm-compiler (~> 0.3.0)
       rails (>= 4.0)
 
