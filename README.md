@@ -42,7 +42,7 @@ This gem is tested against Ruby 2.2 and 2.3, and Rails versions 4.2.7 and 5.0. I
       text ("Hello " ++ noun)
     ```
 
-2. Open your `app/assets/javascript.js` and require your `Hello.elm`.
+2. Open your `app/assets/javascripts/application.js` and require your `Hello.elm`.
   ```
   //= require Hello
   ```
