@@ -20,4 +20,5 @@ Gem::Specification.new do |s|
   s.add_dependency "elm-compiler", "~> 0.3.0"
 
   s.add_development_dependency "minitest"
+  s.add_development_dependency "appraisal"
 end
