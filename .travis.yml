@@ -1,11 +1,20 @@
+sudo: false
 language: ruby
-install:
-  - bundle install
-  - bundle install --gemfile=test/acceptance/rails4.2/Gemfile
-  - bundle install --gemfile=test/acceptance/rails5.0/Gemfile
-  - npm install -g elm
+
 rvm:
   - 2.5.0
   - 2.4.3
   - 2.3.6
   - 2.2.9
+
+install:
+  - bundle install
+  - bundle install --gemfile=test/acceptance/rails4.2/Gemfile
+  - bundle install --gemfile=test/acceptance/rails5.0/Gemfile
+  - npm install -g elm
+
+cache:
+  bundler: true
+  directories:
+    - node_modules
+
