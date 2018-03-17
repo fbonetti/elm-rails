@@ -10,6 +10,7 @@ rvm:
 gemfile:
   - gemfiles/rails_4.2.gemfile
   - gemfiles/rails_5.0.gemfile
+  - gemfiles/rails_5.1.gemfile
 
 before_install:
   - | # epic build time improvement - see https://github.com/elm-lang/elm-compiler/issues/1473#issuecomment-245704142
