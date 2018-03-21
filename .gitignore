@@ -7,6 +7,4 @@ pkg/
 tags
 *un~
 *swp
-
-test/**/public/assets/**/*
-test/**/elm-stuff/**/*
+dummy

@@ -7,6 +7,11 @@ rvm:
   - 2.3.6
   - 2.2.9
 
+gemfile:
+  - gemfiles/rails_4.2.gemfile
+  - gemfiles/rails_5.0.gemfile
+  - gemfiles/rails_5.1.gemfile
+
 before_install:
   - | # epic build time improvement - see https://github.com/elm-lang/elm-compiler/issues/1473#issuecomment-245704142
     if [ ! -d sysconfcpus/bin ];
@@ -20,8 +25,6 @@ before_install:
 
 install:
   - bundle install
-  - bundle install --gemfile=test/acceptance/rails4.2/Gemfile
-  - bundle install --gemfile=test/acceptance/rails5.0/Gemfile
   - npm install -g elm
   - | # epic build time improvement, continued:
     mv $(npm config get prefix)/bin/elm-make $(npm config get prefix)/bin/elm-make-old
@@ -33,4 +36,5 @@ cache:
   directories:
     - node_modules
     - sysconfcpus
+    - elm-stuff
 
