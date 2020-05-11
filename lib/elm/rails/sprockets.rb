@@ -28,10 +28,10 @@ module Elm
         DependencyGraph.new(input[:filename], input[:load_path]).each do |dependency|
           context.depend_on dependency
         end
-        compiled = Elm::Compiler.compile(input[:filename], {
+        compiled = Elm::Compiler.compile(input[:filename],
           debug: debug_flag,
           elm_make_path: Elm::Rails.elm_make_path
-        })
+        )
         context.metadata.merge data: compiled
       end
 
