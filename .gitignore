@@ -8,3 +8,5 @@ tags
 *un~
 *swp
 dummy
+Gemfile.lock
+gemfiles/*.lock
