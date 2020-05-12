@@ -4,6 +4,8 @@
 
 ## Compatibility
 
+Only works with Elm 0.18, at the moment. PRs welcome for Elm 0.19 compatibility!
+
 This gem is tested against Ruby versions 2.2, 2.3, 2.4, and 2.5; and Rails versions 4.2, 5.0, and 5.1. It _may_ work on other versions, and if you want to open a PR adding tests against those versions they would be welcome.
 
 ## Installation
