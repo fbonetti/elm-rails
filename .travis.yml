@@ -12,6 +12,7 @@ gemfile:
   - gemfiles/rails_5.1.gemfile
 
 before_install:
+  - gem install bundler -v"~>1.0"
   - | # epic build time improvement - see https://github.com/elm-lang/elm-compiler/issues/1473#issuecomment-245704142
     if [ ! -d sysconfcpus/bin ];
     then
