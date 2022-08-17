@@ -16,12 +16,7 @@ module Elm
 
         config.assets.configure do |env|
           env.register_mime_type "text/x-elm", extensions: [".elm"]
-
-          if Gem::Version.new(Sprockets::VERSION) >= Gem::Version.new("3.0.0")
-            env.register_transformer "text/x-elm", "application/javascript", Elm::Rails::Sprockets
-          else
-            env.register_engine ".elm", Elm::Rails::Sprockets
-          end
+          env.register_transformer "text/x-elm", "application/javascript", Elm::Rails::Sprockets
         end
       end
     end

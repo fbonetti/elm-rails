@@ -4,7 +4,7 @@
 
 ## Compatibility
 
-Only works with Elm 0.18, at the moment. PRs welcome for Elm 0.19 compatibility!
+Only works with Elm 0.19.
 
 This gem is tested against Ruby versions 2.2, 2.3, 2.4, and 2.5; and Rails versions 4.2, 5.0, and 5.1. It _may_ work on other versions, and if you want to open a PR adding tests against those versions they would be welcome.
 
@@ -60,9 +60,9 @@ This gem is tested against Ruby versions 2.2, 2.3, 2.4, and 2.5; and Rails versi
 
 ## Configuration
 
-By default, elm-rails will use the version of `elm-make` available in your system path. If you wish, you may configure this in an initializer:
-    **config/initializers/elm_rails.rb**
+By default, elm-rails uses [elm-compiler](https://github.com/fbonetti/ruby-elm-compiler) under the hood, which will use the version of `elm` available in your system path, and then installing its own copy in /tmp if needed. If you wish, you may configure this path in an initializer:
+    **config/initializers/elm_compiler.rb**
     ```erb
-    Elm::Rails.elm_make_path = "bin/elm-make"
+    Elm::Compiler.elm_path = "bin/elm"
     ```
 
