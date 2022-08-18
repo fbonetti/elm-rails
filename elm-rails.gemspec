@@ -20,6 +20,8 @@ Gem::Specification.new do |s|
   s.add_dependency "sprockets-rails", "~>3.0"
   s.add_dependency "elm-compiler", "~>0.4.0"
 
-  s.add_development_dependency "minitest"
   s.add_development_dependency "appraisal"
+  s.add_development_dependency 'rspec', '~> 3.0'
+  s.add_development_dependency 'rake'
+  s.add_development_dependency 'byebug'
 end

@@ -1,5 +1,3 @@
-require "minitest/autorun"
-
 describe "elm-rails" do
   before do
     File.write "/tmp/rails_template.rb", <<-RUBY.strip_heredoc
@@ -80,7 +78,7 @@ describe "elm-rails" do
   end
 
   def sh command
-    assert system(command)
+    expect(system(command)).to be_truthy
   end
 
   class String
