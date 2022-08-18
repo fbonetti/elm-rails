@@ -8,7 +8,7 @@ GIT
 PATH
   remote: ..
   specs:
-    elm-rails (0.3.0)
+    elm-rails (0.4.0)
       elm-compiler (~> 0.4.0)
       rails (>= 6.0)
       sprockets-rails (~> 3.0)
