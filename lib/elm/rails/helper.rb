@@ -43,7 +43,9 @@ module Elm
             var embedDiv = currentScript.previousSibling;
 
             onLoad(function() {
-              window.#{raw module_name} = #{raw module_name}.embed(embedDiv, #{raw args.to_json});
+              var args = #{raw args.to_json};
+              args.node = embedDiv;
+              window.#{raw module_name} = #{raw module_name}.init(args)
             });
           })();
         HTML
