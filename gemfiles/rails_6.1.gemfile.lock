@@ -8,7 +8,7 @@ GIT
 PATH
   remote: ..
   specs:
-    elm-rails (0.4.0)
+    elm-rails (0.4.1)
       elm-compiler (~> 0.4.0)
       rails (>= 6.0)
       sprockets-rails (~> 3.0)
@@ -175,4 +175,4 @@ DEPENDENCIES
   rspec (~> 3.0)
 
 BUNDLED WITH
-   2.1.4
+   2.2.32
